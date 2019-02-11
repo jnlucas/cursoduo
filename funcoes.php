@@ -56,7 +56,11 @@ function definirX($linha,$coluna){
 
 	if($linha == $coluna){
 		echo 'x';
-	}else{
+	}
+	elseif($linha == (10 - $coluna)){
+		echo "x";
+	}
+	else{
 		echo 0;
 	}
 	
