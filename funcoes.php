@@ -65,4 +65,27 @@ function definirX($linha,$coluna){
 	}
 	
 }
+
+
+function conexao($host,$usuario,$senha,$banco){
+
+
+	mysql_connect($host,$usuario,$senha) or die("nao consegui conectar com o banco de dados");
+
+	mysql_select_db($banco) or die("banco de dados nao encontrado");
+
+}
+
+
+
+
+function listaPacientes(){
+
+	 $sql = "SELECT * FROM pacientes ";
+
+	$data =  mysql_query($sql);
+
+	return $data;
+
+}
 ?>

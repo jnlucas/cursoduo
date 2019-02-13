@@ -1,6 +1,10 @@
 <?php
 require_once "funcoes.php";
+include_once "configuracao.php";
 
+$pacientes = listaPacientes();
+
+var_dump($pacientes);
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +14,9 @@ require_once "funcoes.php";
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
 </head>
 <body>
