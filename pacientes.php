@@ -4,7 +4,7 @@ include_once "configuracao.php";
 
 $pacientes = listaPacientes();
 
-var_dump($pacientes);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,8 @@ var_dump($pacientes);
 <body>
 
 <div class="container">
-	
+
+<a href="novo.php" class="btn btn-primary">Novo paciente</a>
 <table class="table table-striped table-bordered " id="pacientes">
 	<tr>
 		<th>Nome</th>
@@ -30,14 +31,18 @@ var_dump($pacientes);
 		<th>Email</th>
 		<th>Acoes</th>
 	</tr>
-
+<?php foreach($pacientes as $valor): ?>
 	<tr>
-		<td>sdfsf</td>
-		<td>sdfsd</td>
-		<td>sdfsd</td>
-		<td>sdfsdf</td>
+		<td><?php echo $valor['nome']?></td>
+		<td><?php echo $valor['cpf']?></td>
+		<td><?php echo $valor['email']?></td>
+		<td>
+			<a href="">editar</a> | 
+			<a href="">excluir</a>
+		</td>
 
 	</tr>
+<?php endforeach?>
 
 	
 </table>

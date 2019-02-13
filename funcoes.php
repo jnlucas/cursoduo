@@ -76,7 +76,14 @@ function conexao($host,$usuario,$senha,$banco){
 
 }
 
+function getAssoc($data){
+	$retorno = [];
+	while($a = mysql_fetch_assoc($data)){
 
+		$retorno[] = $a;
+	}
+	return $retorno;
+}
 
 
 function listaPacientes(){
@@ -85,7 +92,9 @@ function listaPacientes(){
 
 	$data =  mysql_query($sql);
 
-	return $data;
+	$retorno = getAssoc($data);
+	
+	return $retorno;
 
 }
 ?>
