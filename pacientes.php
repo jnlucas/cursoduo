@@ -23,26 +23,59 @@ $pacientes = listaPacientes();
 
 <div class="container">
 
+<?php if($_GET['msg']):?>
+<div>
+	
+	<div class="alert alert-primary" role="alert">
+	  <?php echo $_GET['msg']?>
+	</div>
+
+
+</div>
+<?php endif ?>
+
+
+<?php if($_GET['msgErro']):?>
+<div>
+	
+	<div class="alert alert-danger" role="alert">
+	  <?php echo $_GET['msgErro']?>
+	</div>
+
+	
+</div>
+<?php endif ?>
+
 <a href="novo.php" class="btn btn-primary">Novo paciente</a>
 <table class="table table-striped table-bordered " id="pacientes">
-	<tr>
+	<thead>
+		<tr>
 		<th>Nome</th>
 		<th>Cpf</th>
 		<th>Email</th>
 		<th>Acoes</th>
 	</tr>
-<?php foreach($pacientes as $valor): ?>
-	<tr>
-		<td><?php echo $valor['nome']?></td>
-		<td><?php echo $valor['cpf']?></td>
-		<td><?php echo $valor['email']?></td>
-		<td>
-			<a href="">editar</a> | 
-			<a href="">excluir</a>
-		</td>
+	</thead>
+	<tbody>
+		<?php foreach($pacientes as $valor): ?>
+		<tr>
+			<td><?php echo $valor['nome']?></td>
+			<td><?php echo $valor['cpf']?></td>
+			<td><?php echo $valor['email']?></td>
+			<td>
+				<a href="editar.php?parametro=<?php echo $valor['id']?>">editar</a> | 
+				<a href="excluir.php?parametro=<?php echo $valor['id']?>">excluir</a>
+			</td>
 
-	</tr>
-<?php endforeach?>
+		</tr>
+	<?php endforeach?>
+	
+	
+	
+	
+	
+	</tbody>
+
 
 	
 </table>

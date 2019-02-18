@@ -97,4 +97,83 @@ function listaPacientes(){
 	return $retorno;
 
 }
+
+
+function cadastraPaciente($params){
+
+
+	$nome = $params['nome'];
+	$cpf = $params['cpf'];
+	$email = $params['email'];
+
+
+	 $sql = "INSERT INTO pacientes 
+			(id,nome,cpf,email) 
+	VALUES (NULL,'$nome','$cpf','$email')";
+
+	
+	if(mysql_query($sql)){
+		header("location:pacientes.php?msg=cadastro realizado com sucesso");
+	}else{
+		header("location:pacientes.php?msgErro=Erro ao realizar cadastro");
+	}
+
+
+	
+}
+
+
+function getPaciente($idPaciente){
+
+	$sql = "SELECT * FROM pacientes WHERE id = $idPaciente";
+
+	$data = mysql_query($sql);
+
+	return getAssoc($data);
+
+
+
+
+}
+
+function editarPaciente($params){
+
+	$nome = $params['nome'];
+	$cpf = $params['cpf'];
+	$email = $params['email'];
+	$id = $params['parametro'];
+
+	 $sql = "UPDATE pacientes SET nome = '$nome', cpf = '$cpf', email = '$email' 
+	WHERE id = $id";
+
+	
+
+	if(mysql_query($sql)){
+		header("location:pacientes.php?msg=cadastro realizado com sucesso");
+	}else{
+		header("location:pacientes.php?msgErro=Erro ao realizar cadastro");
+	}
+
+}
+
+
+
+function excluirPaciente($params){
+
+	$id = $params['parametro'];
+
+	 $sql = "DELETE FROM pacientes 
+	WHERE id = $id";
+
+	
+
+	if(mysql_query($sql)){
+		header("location:pacientes.php?msg=cadastro excluido com sucesso");
+	}else{
+		header("location:pacientes.php?msgErro=Erro ao excluir cadastro");
+	}
+
+}
+
+
 ?>
